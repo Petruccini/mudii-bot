@@ -1,0 +1,21 @@
+{
+  "name": "mudii-bot",
+  "version": "1.0.0",
+  "description": "A Bot for Discord by mudii",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Bot",
+    "Mudii",
+    "Discord"
+  ],
+  "author": "Pedro David Pérez Delfín",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.3",
+    "discord.js": "^12.4.1",
+    "dotenv": "^8.2.0"
+  }
+}
