@@ -21,7 +21,7 @@ client.on('guildMemberAdd', member => {
   // No hacer nada si no se encontró el chat
   if (!channel) return;
   // Enviar mensaje de bienvenida
-  channel.send(`Bienvenido a la comunidad mudii, ${member}`);
+  channel.send(`Bienvenid@ a la comunidad mudii, ${member}`);
 });
 
 
