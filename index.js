@@ -2,6 +2,23 @@ require('dotenv').config();
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const TOKEN = process.env.TOKEN;
+const DBUSER = process.env.DBUSER;
+const DBKEY = process.env.DBKEY;
+
+// Módulo para la funcionalidad de nivel
+const Level = require('./app/discord_level/level.js');
+
+// MongoDB Conexión
+const mongoose = require('mongoose');
+mongoose.connect('mongodb+srv://' + DBUSER + ':' + DBKEY + '@mudii-bot.gmyad.mongodb.net/mudii-bot?retryWrites=true&w=majority', {useNewUrlParser: true});
+
+// Checar conexión MongoDB
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+  console.log("Connected");
+});
 
 // Roles
 const CODER = '768246303237865492';
@@ -27,6 +44,9 @@ client.on('guildMemberAdd', member => {
 
 // Unirse a una comunidad
 client.on('message', msg => {
+  // Agregar mensaje al contador
+  Level.addMessage(msg);
+
   // Verificar que el mensaje empiece con #unirme a: 
   if (msg.content.startsWith('#unirme a: ')) {
     // Guardar el rol en la variable role
