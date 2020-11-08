@@ -18,7 +18,7 @@ const addMessage = (msg) => {
       }
 
       // Si no existe un miembro con ese id en la base de datos lo crea
-      let member = new Member({ id: msg.member.id, nickname: msg.member.displayName, messages: msgValue });
+      let member = new Member({ id: msg.member.id, nickname: msg.member.displayName, messages: 1, messagesValue: msgValue });
       member.save(function (err, member) {
         if (err) return console.error(err);
       });
@@ -33,7 +33,8 @@ const addMessage = (msg) => {
       }
 
       // Agregar el valor del mensaje a el contgador del usuario
-      member[0].messages += msgValue
+      member[0].messages++;
+      member[0].messagesValue += msgValue;
       member[0].save(function (err, member) {
         if (err) return console.error(err);
       });
